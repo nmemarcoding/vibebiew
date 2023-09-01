@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { publicRequest } from '../../hooks/requestMethods';
+import { useNavigate } from 'react-router-dom'
 
 const SignupPage = () => {
   const [formData, setFormData] = useState({
@@ -7,7 +9,7 @@ const SignupPage = () => {
     email: '',
     password: ''
   });
-
+  const navigate = useNavigate()
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prevState => ({
@@ -19,6 +21,12 @@ const SignupPage = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     // Handle signup logic here
+    publicRequest().post('/auth/register', formData)
+    .then(res => {
+        navigate('/login');
+    })
+    .catch(err => console.log(err))
+
   };
 
   return (
