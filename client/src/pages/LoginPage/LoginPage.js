@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import { publicRequest } from '../../hooks/requestMethods';
-
+import useStore from '../../store.js'
+import { useNavigate } from 'react-router-dom'
 const LoginPage = () => {
   const [formData, setFormData] = useState({
     email: '',
     password: ''
   });
+  const addUserInfo = useStore((state) => state.addUserInfo)
+  const navigate = useNavigate()
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -19,11 +22,14 @@ const LoginPage = () => {
     e.preventDefault();
     publicRequest().post('/auth/login', formData)
       .then(res => {
-        console.log(res.data);
+        addUserInfo(res.data)
+        navigate('/')
        
       }
       )
-      .catch(err => console.log(err));
+      .catch((err) => {console.log(err)
+        window.alert('Invalid email or password')
+      })
 
    
   };
@@ -41,7 +47,7 @@ const LoginPage = () => {
             <input 
               type="text" 
               name="email"
-              value={formData.email} 
+             
               onChange={handleChange} 
               className="w-full p-2 border rounded-md" 
               placeholder="Email" 
@@ -52,7 +58,7 @@ const LoginPage = () => {
             <input 
               type="password" 
               name="password"
-              value={formData.password} 
+             
               onChange={handleChange} 
               className="w-full p-2 border rounded-md" 
               placeholder="Password" 
