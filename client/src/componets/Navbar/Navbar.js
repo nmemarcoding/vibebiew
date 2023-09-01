@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
+import store from '../../store.js'
 
 const Navbar = () => {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
-  const username = "JohnDoe"; // Replace with the actual username
-
+  
+//   getting user name from store
+  const userInfo = store.getState().userInfo
+    
   const toggleMobileMenu = () => {
     setShowMobileMenu(!showMobileMenu);
   };
@@ -21,7 +24,7 @@ const Navbar = () => {
           <a href="#" className="text-gray-600">Home</a>
           <a href="#" className="text-gray-600">Explore</a>
           <a href="#" className="text-gray-600">Profile</a>
-          <span className="text-gray-600 ml-4">{username}</span>
+          <span className="text-gray-600 ml-4">Hi,{userInfo.firstName.toUpperCase()}</span>
         </div>
 
         {/* Mobile Navigation */}
@@ -36,7 +39,7 @@ const Navbar = () => {
       {showMobileMenu && (
         <div className="md:hidden bg-white border-t border-gray-300">
           <div className="max-w-screen-lg mx-auto px-4 py-2">
-            <span className="block py-2 text-gray-600">{username}</span>
+            <span className="block py-2 text-gray-600">Hi,{userInfo.firstName.toUpperCase()}</span>
             <a href="#" className="block py-2 text-gray-600">Home</a>
             <a href="#" className="block py-2 text-gray-600">Explore</a>
             <a href="#" className="block py-2 text-gray-600">Profile</a>
