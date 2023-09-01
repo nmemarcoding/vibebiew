@@ -72,7 +72,7 @@ const SignupPage = () => {
                     placeholder="Password" 
                 />
             </div>
-            <button type="submit" className="w-full bg-[#BAD4A1]  p-2 rounded-md hover:bg-blue-600 mb-4">Sign Up</button>
+            <button type="submit" className="w-full bg-[#style: changed theme color]  p-2 rounded-md hover:bg-blue-600 mb-4">Sign Up</button>
         </form>
 
         <div className="text-center">

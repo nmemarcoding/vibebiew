@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
+import { publicRequest } from '../../hooks/requestMethods';
 
 const LoginPage = () => {
   const [formData, setFormData] = useState({
-    username: '',
+    email: '',
     password: ''
   });
 
@@ -16,7 +17,15 @@ const LoginPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle login logic here
+    publicRequest().post('/auth/login', formData)
+      .then(res => {
+        console.log(res.data);
+       
+      }
+      )
+      .catch(err => console.log(err));
+
+   
   };
 
   return (
@@ -28,14 +37,14 @@ const LoginPage = () => {
         
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
-            <label className="block text-sm font-medium text-gray-600 mb-2">Username</label>
+            <label className="block text-sm font-medium text-gray-600 mb-2">Email</label>
             <input 
               type="text" 
-              name="username"
-              value={formData.username} 
+              name="email"
+              value={formData.email} 
               onChange={handleChange} 
               className="w-full p-2 border rounded-md" 
-              placeholder="Username" 
+              placeholder="Email" 
             />
           </div>
           <div className="mb-4">
