@@ -1,16 +1,29 @@
 import React, { useState } from 'react';
+import store from '../../store.js'
+import { publicRequest } from '../../hooks/requestMethods.js';
+
 
 const NewPost = () => {
   const [postContent, setPostContent] = useState('');
-
+  const userInfo = store.getState().userInfo
   const handlePostSubmit = (e) => {
     e.preventDefault();
     if (postContent.trim() === '') {
       alert('Post content cannot be empty.');
       return;
     }
+
     // You can send `postContent` to the server or handle it as needed
-    console.log('New Post:', postContent);
+    
+    publicRequest().post('/post', {
+      userId: userInfo._id,
+      desc: postContent,
+    })
+      .then(res => {
+        window.alert('Post created successfully')
+      }
+      )
+
     setPostContent(''); // Clear the textarea
   };
 

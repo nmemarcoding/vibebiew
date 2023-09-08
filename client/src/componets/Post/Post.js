@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 
+
 const Post = ({ username, timestamp, content, likes, commentList }) => {
   const [showComments, setShowComments] = useState(false);
 
