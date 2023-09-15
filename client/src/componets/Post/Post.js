@@ -38,13 +38,6 @@ const Post = ({ username, timestamp, content, likes, commentList,commentUserId }
       {/* Comments Section */}
       {showComments && (
         <div className="mt-4 space-y-2">
-          {commentList.map((c, index) => (
-            <div key={index} className="text-sm text-gray-700">
-              <strong>{c.userId.firstName} {c.userId.lastName}</strong>
-              <div> {c.desc}</div>
-            </div>
-          ))}
-
           {/* Comment Input */}
           <div className="mt-4">
             <input
@@ -61,6 +54,14 @@ const Post = ({ username, timestamp, content, likes, commentList,commentUserId }
               Submit Comment
             </button>
           </div>
+          {commentList.map((c, index) => (
+            <div key={index} className="text-sm text-gray-700">
+              <strong>{c.userId.firstName} {c.userId.lastName}</strong>
+              <div> {c.desc}</div>
+            </div>
+          ))}
+
+          
         </div>
       )}
     </div>
