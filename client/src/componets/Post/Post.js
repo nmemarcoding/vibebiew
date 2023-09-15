@@ -1,11 +1,24 @@
 import React, { useState } from 'react';
 
-
 const Post = ({ username, timestamp, content, likes, commentList }) => {
   const [showComments, setShowComments] = useState(false);
+  const [comment, setComment] = useState(''); // New state for comment input
 
   const toggleComments = () => {
     setShowComments(!showComments);
+  };
+
+  const handleCommentChange = (e) => {
+    setComment(e.target.value);
+  };
+
+  const handleCommentSubmit = () => {
+    // For simplicity, just adding to local state. In real-world, you'd update backend.
+    commentList.push({
+      username: 'Current User', // Replace with the actual username of the commenter
+      text: comment,
+    });
+    setComment(''); // Clear the comment input
   };
 
   return (
@@ -30,6 +43,23 @@ const Post = ({ username, timestamp, content, likes, commentList }) => {
               <strong>{c.username}</strong>: {c.text}
             </div>
           ))}
+
+          {/* Comment Input */}
+          <div className="mt-4">
+            <input
+              type="text"
+              value={comment}
+              onChange={handleCommentChange}
+              placeholder="Add a comment..."
+              className="border rounded p-2 w-full"
+            />
+            <button
+              onClick={handleCommentSubmit}
+              className="mt-2 bg-blue-500 text-white rounded p-2 w-full"
+            >
+              Submit Comment
+            </button>
+          </div>
         </div>
       )}
     </div>

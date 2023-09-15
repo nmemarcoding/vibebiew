@@ -12,7 +12,10 @@ export default function
     React.useEffect(() => {
         publicRequest().get('/post/timeline/' + userInfo._id)
             .then(res => {
-                setPosts(res.data)
+                // reverse posts array to show latest posts first
+                
+
+                setPosts(res.data.reverse())
                 console.log(res.data)
             }).catch(err => {
                 console.log(err)
