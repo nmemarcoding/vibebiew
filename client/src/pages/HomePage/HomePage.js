@@ -60,6 +60,9 @@ export default function
           content={post.desc}
           likes={post.likes.length}
           commentList={post.comments}
+          postId={post._id}
+          commentUserId={userInfo._id}
+        
         />
       ))}
         </div>

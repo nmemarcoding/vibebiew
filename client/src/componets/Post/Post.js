@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 
-const Post = ({ username, timestamp, content, likes, commentList }) => {
+const Post = ({ username, timestamp, content, likes, commentList,commentUserId }) => {
   const [showComments, setShowComments] = useState(false);
   const [comment, setComment] = useState(''); // New state for comment input
-
+  console.log(commentList)
   const toggleComments = () => {
     setShowComments(!showComments);
   };
@@ -40,7 +40,8 @@ const Post = ({ username, timestamp, content, likes, commentList }) => {
         <div className="mt-4 space-y-2">
           {commentList.map((c, index) => (
             <div key={index} className="text-sm text-gray-700">
-              <strong>{c.username}</strong>: {c.text}
+              <strong>{c.userId.firstName} {c.userId.lastName}</strong>
+              <div> {c.desc}</div>
             </div>
           ))}
 
