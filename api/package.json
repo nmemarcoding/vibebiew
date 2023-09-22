@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@faker-js/faker": "^8.1.0",
     "axios": "^1.5.0",
     "cors": "^2.8.5",
     "crypto-js": "^4.1.1",
@@ -17,5 +18,8 @@
     "mongoose": "^7.4.4",
     "mongose": "^0.0.2-security",
     "nodemon": "^3.0.1"
+  },
+  "devDependencies": {
+    "faker": "^5.5.3"
   }
 }
