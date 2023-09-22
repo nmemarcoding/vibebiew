@@ -21,9 +21,9 @@ const Navbar = () => {
 
         {/* Navigation Links for Desktop */}
         <div className="hidden md:flex space-x-4 items-center">
-          <a href="#" className="text-gray-600">Home</a>
-          <a href="#" className="text-gray-600">Explore</a>
+          <a href="/" className="text-gray-600">Home</a>
           <a href="#" className="text-gray-600">Profile</a>
+          <a href="/findfriends" className="text-gray-600">Find Friends</a>
           <span className="text-gray-600 ml-4">Hi,{userInfo.firstName.toUpperCase()}</span>
         </div>
 
@@ -40,10 +40,9 @@ const Navbar = () => {
         <div className="md:hidden bg-white border-t border-gray-300">
           <div className="max-w-screen-lg mx-auto px-4 py-2">
             <span className="block py-2 text-gray-600">Hi,{userInfo.firstName.toUpperCase()}</span>
-            <a href="#" className="block py-2 text-gray-600">Home</a>
-            <a href="#" className="block py-2 text-gray-600">Explore</a>
+            <a href="/" className="block py-2 text-gray-600">Home</a>
             <a href="#" className="block py-2 text-gray-600">Profile</a>
-            
+            <a href="/findfriends" className="block py-2 text-gray-600">Find Friends</a>
           </div>
         </div>
       )}
