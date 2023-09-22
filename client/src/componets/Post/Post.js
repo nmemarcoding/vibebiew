@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
+import {publicRequest} from '../../hooks/requestMethods';
+import store from '../../store.js'
 
-const Post = ({ username, timestamp, content, likes, commentList,commentUserId }) => {
+const Post = ({ username, timestamp, content, likes, commentList,commentUserId,postId }) => {
   const [showComments, setShowComments] = useState(false);
-  const [comment, setComment] = useState(''); // New state for comment input
-  console.log(commentList)
+  const [comment, setComment] = useState('');
+  const userInfo = store.getState().userInfo
+ 
+  console.log(commentUserId)
   const toggleComments = () => {
     setShowComments(!showComments);
   };
@@ -13,12 +17,16 @@ const Post = ({ username, timestamp, content, likes, commentList,commentUserId }
   };
 
   const handleCommentSubmit = () => {
-    // For simplicity, just adding to local state. In real-world, you'd update backend.
-    commentList.push({
-      username: 'Current User', // Replace with the actual username of the commenter
-      text: comment,
-    });
-    setComment(''); // Clear the comment input
+    publicRequest().post('/comment', {
+      userId: userInfo._id,
+      postId: postId,
+      desc: comment,
+    }
+    ).then(res => console.log(res))
+    .catch(err => console.log(err))
+
+    setComment('');
+
   };
 
   return (

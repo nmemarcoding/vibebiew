@@ -23,29 +23,7 @@ export default function
             )
     }, [])
     
-    const samplePosts = [
-        {
-          username: "JohnDoe",
-          timestamp: "2 hours ago",
-          content: "This is my first post!",
-          likes: 4,
-          commentList: [
-            { username: 'Alice', text: 'Nice post!' },
-            { username: 'Bob', text: 'I totally agree.' }
-          ]
-        },
-        {
-          username: "JaneDoe",
-          timestamp: "3 hours ago",
-          content: "Wow, this app is amazing!",
-          likes: 7,
-          commentList: [
-            { username: 'Charlie', text: 'This is insightful!' },
-            { username: 'David', text: 'Great post!' },
-            { username: 'Eve', text: 'I totally agree.' }
-          ]
-        }
-      ];
+    
     
     
       return (
