@@ -3,7 +3,16 @@ const User = require("../models/user.js");
 const CryptoJS = require("crypto-js");
 const jwt = require("jsonwebtoken");
 
-
+// GET ALL USERS
+router.get("/users", async(req, res) => {
+  try {
+    const users = await User.find({}, { firstName: 1, lastName: 1, email: 1, _id: 1 });
+    res.status(200).json(users);
+  } catch (err) {
+    res.status(500).json(err);
+    console.log(err)
+  }
+});
 
 //REGISTER
 router.post("/register", async(req, res) => {
@@ -80,5 +89,8 @@ router.post('/login', async(req, res) => {
 
 });
 
-
 module.exports = router;
+
+
+
+
