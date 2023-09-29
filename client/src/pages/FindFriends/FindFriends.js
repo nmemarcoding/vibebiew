@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import Navbar from '../../componets/Navbar/Navbar';
 import { publicRequest } from '../../hooks/requestMethods';
+import store from '../../store.js'
 
 export default function FindFriends() {
     const [users, setUsers] = useState([]);
+    const userInfo = store.getState().userInfo
 
     useEffect(() => {
         // Fetch all users that the current user can view
@@ -17,14 +18,18 @@ export default function FindFriends() {
             });
     }, []);
 
-    const handleAddFriend = (userId) => {
+    const handleAddFriend = (FriendId) => {
         // Add the user with the given userId as a friend
-        axios.post(`/api/users/${userId}/friends`)
+        publicRequest().put('auth/addfriend', {
+            userId: userInfo._id,
+            friendId: FriendId
+        })
             .then(res => {
-                console.log(res.data);
+                window.alert(res.data);
             })
             .catch(err => {
-                console.log(err);
+                window.alert(err.request.response
+                    );
             });
     };
 
@@ -40,7 +45,7 @@ export default function FindFriends() {
                         <p className="text-gray-500 mb-4">{user.email}</p>
                         <button
                             className="bg-[#BAD4A1] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-                            onClick={() => handleAddFriend(user.id)}
+                            onClick={() => handleAddFriend(user._id)}
                         >
                             Add Friend
                         </button>
