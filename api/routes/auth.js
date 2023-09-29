@@ -2,7 +2,7 @@ const router = require("express").Router();
 const User = require("../models/user.js");
 const CryptoJS = require("crypto-js");
 const jwt = require("jsonwebtoken");
-
+const mongoos = require("mongoose");
 // GET ALL USERS
 router.get("/users", async(req, res) => {
   try {
@@ -13,6 +13,51 @@ router.get("/users", async(req, res) => {
     console.log(err)
   }
 });
+
+// add friend to following list
+
+router.put("/addfriend", async(req, res) => {
+    // validate user id and friend id for mongoos
+
+    if(!mongoos.Types.ObjectId.isValid(req.body.userId) || !mongoos.Types.ObjectId.isValid(req.body.friendId)){
+        return res.status(400).json({error: "User id or friend id is not valid"});
+    }
+    
+
+    const userId = req.body.userId;
+    const friendId = req.body.friendId;
+    
+
+    try {
+        const user = await User.findById(userId);
+        const friend = await User.findById(friendId);
+
+        if(!user || !friend){
+            return res.status(400).json({error: "User or friend does not exist"});
+        }
+
+        // check if friend is already in following list 
+        if(user.following.includes(friendId)){
+            return res.status(400).json({error: "You already follow this user"});
+        }
+
+        // add friend to following list
+        await user.updateOne({$push: {following: friendId}});
+        // add user to friend followers list
+        await friend.updateOne({$push: {followers: userId}});
+        res.status(200).json("You are now following this user");
+
+        
+
+        
+    } catch (err) {
+        res.status(500).json(err); 
+        console.log(err)
+    }
+}
+);
+
+
 
 //REGISTER
 router.post("/register", async(req, res) => {
