@@ -78,7 +78,7 @@ router.get("/timeline/:userId", async (req, res) => {
     
 
     try {
-        res.status(200).json(timelinePosts);
+        res.status(200).json(timelinePosts.reverse());
     } catch (err) {
         res.status(500).json(err);
         console.log(err);
