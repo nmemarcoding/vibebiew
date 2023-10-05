@@ -45,9 +45,40 @@ router.get("/timeline/:userId", async (req, res) => {
             select: "-password"
         }
     });
+    // fetch user
+    const user = await User.findOne({
+        _id: req.params.userId
+    });
+    // fetch all user followings posts
+
+    const followingPosts = await Promise.all(
+        user.following.map((friendId) => {
+            return Post.find({
+                userId: friendId
+            }).populate({
+                path: "userId",
+                select: "-password"
+            }).populate({
+                path: "comments",
+                populate: {
+                    path: "userId",
+                    select: "-password"
+                }
+            });
+        })
+    );
+    // combine user posts and following posts
+    const timelinePosts = post.concat(...followingPosts);
+    // sort posts by createdAt
+    timelinePosts.sort((a, b) => {
+        return b.createdAt - a.createdAt;
+    });
+    // send posts
+
+    
 
     try {
-        res.status(200).json(post);
+        res.status(200).json(timelinePosts);
     } catch (err) {
         res.status(500).json(err);
         console.log(err);
