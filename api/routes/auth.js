@@ -60,6 +60,44 @@ router.put("/addfriend", async(req, res) => {
 }
 );
 
+//  get list of friends
+
+router.put("/friends", async(req, res) => {
+
+    if (!mongoos.Types.ObjectId.isValid(req.body.userId)) {
+        return res.status(400).json({ error: "User id is not valid" });
+    }
+
+    const userId = req.body.userId;
+
+    try {
+
+        const user = await User.findById(userId);
+
+        if (!user) {
+            return res.status(400).json({ error: "User does not exist" });
+        }
+
+        const friends = await Promise.all(
+            user.following.map((friendId) => {
+                return User.findById(friendId);
+            })
+        );
+
+        let friendList = [];
+        friends.map((friend) => {
+            const { _id, firstName, lastName, email } = friend;
+            friendList.push({ _id, firstName, lastName, email });
+        });
+
+        res.status(200).json(friendList);
+
+    } catch (err) {
+        res.status(500).json(err);
+    }
+}
+);
+
 
 
 //REGISTER
