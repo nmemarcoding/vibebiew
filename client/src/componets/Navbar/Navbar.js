@@ -24,6 +24,7 @@ const Navbar = () => {
           <a href="/" className="text-gray-600">Home</a>
           <a href="#" className="text-gray-600">Profile</a>
           <a href="/findfriends" className="text-gray-600">Find Friends</a>
+          <a href="/myfriends" className="text-gray-600">My Friends</a>
           <span className="text-gray-600 ml-4">Hi,{userInfo.firstName.toUpperCase()}</span>
         </div>
 
@@ -43,6 +44,7 @@ const Navbar = () => {
             <a href="/" className="block py-2 text-gray-600">Home</a>
             <a href="#" className="block py-2 text-gray-600">Profile</a>
             <a href="/findfriends" className="block py-2 text-gray-600">Find Friends</a>
+            <a href="/myfriends" className="block py-2 text-gray-600">My Friends</a>
           </div>
         </div>
       )}

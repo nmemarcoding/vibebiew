@@ -3,6 +3,7 @@ import LoginPage from './pages/LoginPage/LoginPage';
 import SignUpPage from './pages/SignUpPage/SignUpPage';
 import HomePage from './pages/HomePage/HomePage';
 import FindFriends from './pages/FindFriends/FindFriends';
+import MyFriendsPage from './pages/MyFriendsPage/MyFriendsPage';
  
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path="/signup" element={<SignUpPage/>}/>
         <Route path="/" element={<HomePage/>}/>
         <Route path="/findfriends" element={<FindFriends/>}/>
+        <Route path="/myfriends" element={<MyFriendsPage/>}/>
       </Routes>
     </div>
   </Router>
