@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import store from '../../store.js'
 import useStore from '../../store.js';
-
+import { useNavigate } from 'react-router-dom';
 const Navbar = () => {
+  const navigate = useNavigate()
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const deleteUserInfo = useStore((state) => state.deleteUserInfo)
 //   getting user name from store
@@ -14,6 +15,8 @@ const Navbar = () => {
 
   const handleSignOut = () => {
     deleteUserInfo()
+    navigate('/login')
+
   }
 
   return (

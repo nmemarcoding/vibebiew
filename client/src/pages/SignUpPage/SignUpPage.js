@@ -72,13 +72,16 @@ const SignupPage = () => {
             <div className="mb-4">
                 <label className="block text-sm font-medium text-gray-600 mb-2">Password</label>
                 <input 
-                    type="password" 
-                    name="password"
-                    value={formData.password} 
-                    onChange={handleChange} 
-                    className="w-full p-2 border rounded-md" 
-                    placeholder="Password" 
-                />
+    type="password" 
+    name="password"
+    value={formData.password} 
+    onChange={handleChange} 
+    className="w-full p-2 border rounded-md" 
+    placeholder="Password" 
+    pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" 
+    title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 characters"
+/>
+
             </div>
             <button type="submit" className="w-full bg-[#style: changed theme color]  p-2 rounded-md hover:bg-blue-600 mb-4">Sign Up</button>
         </form>
