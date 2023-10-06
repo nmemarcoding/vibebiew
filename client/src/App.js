@@ -1,5 +1,5 @@
 import { BrowserRouter as Router,Routes,Route} from 'react-router-dom';
-import {useState} from 'react'
+import {useState,useEffect} from 'react'
 import LoginPage from './pages/LoginPage/LoginPage';
 import SignUpPage from './pages/SignUpPage/SignUpPage';
 import HomePage from './pages/HomePage/HomePage';
@@ -11,9 +11,16 @@ function App() {
   const userInfo = store.getState().userInfo
   const [userExists, setUserExists] = useState(false);
   // if userInfo is not empty object set userExists to true
-  if (Object.keys(userInfo).length !== 0) {
-    setUserExists(true);
+  useEffect(() => {
+
+    if (Object.keys(userInfo).length === 0) {
+      setUserExists(false)
+      return
+    }
+    setUserExists(true)
   }
+  , []);
+ 
   return (
     
     <Router>
