@@ -1,15 +1,20 @@
 import React, { useState } from 'react';
 import store from '../../store.js'
+import useStore from '../../store.js';
 
 const Navbar = () => {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
-  
+  const deleteUserInfo = useStore((state) => state.deleteUserInfo)
 //   getting user name from store
   const userInfo = store.getState().userInfo
     
   const toggleMobileMenu = () => {
     setShowMobileMenu(!showMobileMenu);
   };
+
+  const handleSignOut = () => {
+    deleteUserInfo()
+  }
 
   return (
     <div className="bg-white border-b border-gray-300">
@@ -26,6 +31,7 @@ const Navbar = () => {
           <a href="/findfriends" className="text-gray-600">Find Friends</a>
           <a href="/myfriends" className="text-gray-600">My Friends</a>
           <span className="text-gray-600 ml-4">Hi,{userInfo?.firstName?.toUpperCase()}</span>
+          <a href="#" className="text-gray-600 ml-4" onClick={handleSignOut}>Sign Out</a>
         </div>
 
         {/* Mobile Navigation */}
@@ -40,11 +46,12 @@ const Navbar = () => {
       {showMobileMenu && (
         <div className="md:hidden bg-white border-t border-gray-300">
           <div className="max-w-screen-lg mx-auto px-4 py-2">
-            <span className="block py-2 text-gray-600">Hi,{userInfo.firstName.toUpperCase()}</span>
+            <span className="block py-2 text-gray-600">Hi,{userInfo?.firstName?.toUpperCase()}</span>
             <a href="/" className="block py-2 text-gray-600">Home</a>
             <a href="#" className="block py-2 text-gray-600">Profile</a>
             <a href="/findfriends" className="block py-2 text-gray-600">Find Friends</a>
             <a href="/myfriends" className="block py-2 text-gray-600">My Friends</a>
+            <a href="#" className="block py-2 text-gray-600" onClick={handleSignOut}>Sign Out</a>
           </div>
         </div>
       )}

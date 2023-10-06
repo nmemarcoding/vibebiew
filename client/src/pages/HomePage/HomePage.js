@@ -1,15 +1,18 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Navbar from '../../componets/Navbar/Navbar'
 import NewPost from '../../componets/NewPost/NewPost'
 import Post from '../../componets/Post/Post'
 import store from '../../store.js'
 import {publicRequest} from '../../hooks/requestMethods.js'
 import {useNavigate} from 'react-router-dom'
+import useAuthRedirect from '../../hooks/useAuthRedirect.js'
 export default function 
 () {
     const userInfo = store.getState().userInfo
     const navigate = useNavigate()
-    // if userInfo is empty redirect to login page
+    // if userInfo is empty object redirect to login page
+   
+    
     
     // fettching posts from server
     const [posts, setPosts] = React.useState([])
