@@ -22,13 +22,13 @@ export default function MyFriendsPage() {
     , []);
     
     const removeFriend = (friendId) => {
-        publicRequest().put('auth/remove-friend', {
+        publicRequest().put('auth/removefriend', {
             userId: userId,
             friendId: friendId
         })
             .then(res => {
                 setFriends(friends.filter(friend => friend._id !== friendId));
-                console.log(res.data);
+                window.alert(res.data);
             })
             .catch(err => {
                 console.log(err);

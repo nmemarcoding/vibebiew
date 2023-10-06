@@ -4,12 +4,22 @@ import NewPost from '../../componets/NewPost/NewPost'
 import Post from '../../componets/Post/Post'
 import store from '../../store.js'
 import {publicRequest} from '../../hooks/requestMethods.js'
+import {useNavigate} from 'react-router-dom'
 export default function 
 () {
     const userInfo = store.getState().userInfo
+    const navigate = useNavigate()
+    // if userInfo is empty redirect to login page
+    
     // fettching posts from server
     const [posts, setPosts] = React.useState([])
     React.useEffect(() => {
+        // if userInfo is empty object redirect to login page
+        if (Object.keys(userInfo).length === 0) {
+            navigate('/login')
+            return
+        }
+        
         publicRequest().get('/post/timeline/' + userInfo._id)
             .then(res => {
                 // reverse posts array to show latest posts first

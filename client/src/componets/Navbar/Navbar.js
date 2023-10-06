@@ -25,7 +25,7 @@ const Navbar = () => {
           <a href="#" className="text-gray-600">Profile</a>
           <a href="/findfriends" className="text-gray-600">Find Friends</a>
           <a href="/myfriends" className="text-gray-600">My Friends</a>
-          <span className="text-gray-600 ml-4">Hi,{userInfo.firstName.toUpperCase()}</span>
+          <span className="text-gray-600 ml-4">Hi,{userInfo?.firstName?.toUpperCase()}</span>
         </div>
 
         {/* Mobile Navigation */}
