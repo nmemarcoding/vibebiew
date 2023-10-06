@@ -110,9 +110,7 @@ router.put("/removefriend", async(req, res) => {
     const userId = req.body.userId;
     const friendId = req.body.friendId;
     //  if friend id is same as user id
-    if(userId === friendId){
-        return res.status(400).json({error: "You cannot unfollow yourself"});
-    }
+    
 
     try {
         const user = await User.findById(userId);
