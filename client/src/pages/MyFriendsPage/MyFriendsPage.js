@@ -2,8 +2,10 @@ import React, { useState, useEffect as UseEffect } from 'react'
 import Navbar from '../../componets/Navbar/Navbar'
 import { publicRequest } from '../../hooks/requestMethods'
 import store from '../../store.js'
+import useAuthRedirect from '../../hooks/useAuthRedirect.js'
 
 export default function MyFriendsPage() {
+    useAuthRedirect();
     const userId = store.getState().userInfo._id;
     const [friends, setFriends] = useState([]);
     // fettching friends list

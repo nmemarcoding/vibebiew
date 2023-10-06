@@ -5,21 +5,11 @@ import SignUpPage from './pages/SignUpPage/SignUpPage';
 import HomePage from './pages/HomePage/HomePage';
 import FindFriends from './pages/FindFriends/FindFriends';
 import MyFriendsPage from './pages/MyFriendsPage/MyFriendsPage';
-import store from './store.js'
+
  
 function App() {
-  const userInfo = store.getState().userInfo
-  const [userExists, setUserExists] = useState(false);
-  // if userInfo is not empty object set userExists to true
-  useEffect(() => {
 
-    if (Object.keys(userInfo).length === 0) {
-      setUserExists(false)
-      return
-    }
-    setUserExists(true)
-  }
-  , []);
+ 
  
   return (
     
@@ -28,9 +18,9 @@ function App() {
       <Routes>
         <Route path="/login" element={<LoginPage/>}/>
         <Route path="/signup" element={<SignUpPage/>}/>
-        <Route path="/" element={(userExists) ? <HomePage/> : <LoginPage/>}/>
-        <Route path="/findfriends" element={(userExists)? <FindFriends/> : <LoginPage/>}/>
-        <Route path="/myfriends" element={(userExists)? <MyFriendsPage/> : <LoginPage/>}/>
+        <Route path="/" element={<HomePage/>}/>
+        <Route path="/findfriends" element={<FindFriends/>}/>
+        <Route path="/myfriends" element={<MyFriendsPage/>}/>
       </Routes>
     </div>
   </Router>

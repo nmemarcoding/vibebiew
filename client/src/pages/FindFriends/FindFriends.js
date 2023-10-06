@@ -2,8 +2,10 @@ import React, { useState, useEffect } from 'react';
 import Navbar from '../../componets/Navbar/Navbar';
 import { publicRequest } from '../../hooks/requestMethods';
 import store from '../../store.js'
+import useAuthRedirect from '../../hooks/useAuthRedirect.js'
 
 export default function FindFriends() {
+    useAuthRedirect();
     const [users, setUsers] = useState([]);
     const userInfo = store.getState().userInfo
 
