@@ -29,6 +29,51 @@ Welcome to VibeView, a vibrant social media platform where you can share your th
 
 1. **Clone the Repository**
 
-   ```sh
+   \```sh
    git clone https://github.com/nmemarcoding/vibeview.git
    cd vibeview
+   \```
+
+2. **Install Dependencies**
+
+   - For API:
+     \```sh
+     cd api
+     npm install
+     \```
+   - For Client:
+     \```sh
+     cd client
+     npm install
+     \```
+
+3. **Setup Environment Variables**
+
+   - Copy \`.env.example\` to \`.env\` and fill in the necessary environment variables.
+
+4. **Start the Application**
+
+   - Start API:
+     \```sh
+     cd api
+     npm start
+     \```
+   - Start Client:
+     \```sh
+     cd client
+     npm start
+     \```
+
+   Open [http://localhost:3000](http://localhost:3000) to view the app in the browser.
+
+## :handshake: Contribution
+
+Contributions, issues, and feature requests are welcome! See [CONTRIBUTING.md](CONTRIBUTING.md) for how to contribute.
+
+## :memo: License
+
+This project is [MIT](LICENSE) licensed.
+
+## :phone: Contact
+
+- **Nima Memarzaadeh** - [nmemarcoding@gmail.com](mailto:nmemarcoding@gmail.com)
