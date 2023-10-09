@@ -21,6 +21,7 @@ const NewPost = () => {
     })
       .then(res => {
         window.alert('Post created successfully')
+        window.location.reload()
       }
       )
 

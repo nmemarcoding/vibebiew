@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import {publicRequest} from '../../hooks/requestMethods';
 import store from '../../store.js'
 
-const Post = ({ username, timestamp, content, likes, commentList,commentUserId,postId }) => {
+const Post = ({ username, timestamp, content, commentList,commentUserId,postId }) => {
   const [showComments, setShowComments] = useState(false);
   const [comment, setComment] = useState('');
   const userInfo = store.getState().userInfo
@@ -22,7 +22,11 @@ const Post = ({ username, timestamp, content, likes, commentList,commentUserId,p
       postId: postId,
       desc: comment,
     }
-    ).then(res => console.log(res))
+    ).then(res => {
+      window.alert('Comment created successfully')
+      window.location.reload()
+    }
+    )
     .catch(err => console.log(err))
 
     setComment('');
@@ -37,10 +41,7 @@ const Post = ({ username, timestamp, content, likes, commentList,commentUserId,p
       </div>
       <p className="mt-2 mb-4">{content}</p>
       <div className="flex justify-between text-sm text-gray-600 mb-2">
-        <span>{likes} Likes</span>
-        <span onClick={toggleComments} className="cursor-pointer">
-          {commentList.length} Comments
-        </span>
+        <span>{commentList.length} Comments</span>
       </div>
 
       {/* Comments Section */}
