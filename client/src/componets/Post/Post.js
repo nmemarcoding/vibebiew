@@ -41,7 +41,7 @@ const Post = ({ username, timestamp, content, commentList,commentUserId,postId }
       </div>
       <p className="mt-2 mb-4">{content}</p>
       <div className="flex justify-between text-sm text-gray-600 mb-2">
-        <span>{commentList.length} Comments</span>
+        <button onClick={toggleComments}>{commentList.length} Comments</button>
       </div>
 
       {/* Comments Section */}
