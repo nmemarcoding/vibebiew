@@ -16,7 +16,7 @@ Live Link(https://vibeview-684e6.web.app/)
 
 - **Frontend**: React, Tailwind CSS
 - **Backend**: Node.js, Express
-- **Database**: [Your Database Technology] <!-- Replace with your actual database technology -->
+- **Database**: mongodb <!-- Replace with your actual database technology -->
 
 ## :rocket: Getting Started
 
@@ -24,7 +24,7 @@ Live Link(https://vibeview-684e6.web.app/)
 
 - Node.js
 - NPM or Yarn
-- [Any other software requirements]
+- react
 
 ### Installation
 
