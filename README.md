@@ -2,7 +2,8 @@
 
 Welcome to VibeView, a vibrant social media platform where you can share your thoughts, connect with friends, and explore new content every day!
 
-![VibeView Logo](path-to-your-logo.png) <!-- Replace with the actual path to your logo -->
+<img width="815" alt="Screen Shot 2023-10-08 at 8 10 44 PM" src="https://github.com/nmemarcoding/vibeview/assets/94582549/bf7e4dd0-827f-400d-9f74-1dacc0aa44de">
+[Live Link](https://vibeview-684e6.web.app/)
 
 ## :star: Features
 
